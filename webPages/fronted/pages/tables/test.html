@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<h1>{{test}}</h1>
+<a href="{% url 'test2' %}">test2</a>
+<div id="research">
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form-item label="审批人">
+        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+    </el-form-item>
+    <el-form-item label="活动区域">
+        <el-select v-model="formInline.region" placeholder="活动区域">
+            <el-option label="区域一" value="shanghai"></el-option>
+            <el-option label="区域二" value="beijing"></el-option>
+        </el-select>
+    </el-form-item>
+    <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+    </el-form-item>
+</el-form>
+</div>
+</body>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el:'#research',
+        data() {
+            return {
+                formInline: {
+                    comp_id: '',
+                    department: '',
+                    comp_type: '',
+                    area: '',
+                    pageNO: '',
+                    pageSize: '',
+                },
+            }
+        },
+        methods: {
+            onSubmit() {
+                axios.get('/area', {
+                    firstname:'xxx',
+                    lastname:'xxx'
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<h1>{{test}}</h1>
+<input type="button" value="测试按钮1" onclick="test();"/>
+<div>
+    <section>
+        <div style="height: 700px">
+            <form action="/area" method="get">
+                <div id="research">
+                    <ul style="list-style: none;margin-left: -35px;" >
+                        <li style="display: inline-block;">IPM单号/JKN单号：</li>
+                        <li style="display: inline-block;width: 200px;"><el-input v-model="input1" placeholder="请输入IPM单号/JKN单号"></el-input></li>
+                        <li style="display: inline-block;">&nbsp; &nbsp; &nbsp;</li>
+                        <li style="display: inline-block;">关键字：</li>
+                        <li style="display: inline-block"><el-input v-model="input2" placeholder="请输入关键字"></el-input></li>
+                        <li style="display: inline-block;">地区：</li>
+                        <li style="display: inline-block;width: 160px">
+                            <el-select v-model="value" placeholder="请选择">
+                                <el-option v-for="item in options_area" :key="item.id" :label="item.areaName" :value="item.id">
+                                </el-option>
+                            </el-select>
+                        </li>
+                        <li style="display: inline-block;">&nbsp; &nbsp; &nbsp;</li>
+                        <li style="display: inline-block"><el-button style="background-color: #3c8dbc;color: #ffffff">搜索</el-button></li>
+                        <li style="display: inline-block"><el-button>重置</el-button></li>
+                    </ul>
+                </div>
+            </form>
+
+            <div id="app">
+                <el-table
+                        :data="tableData"
+                        stripe
+                        border
+                        style="width: 100%">
+                    <el-table-column
+                            fixed="left"
+                            prop="areaName"
+                            label="地区"
+                            width="210">
+                    </el-table-column>
+                    <el-table-column
+                            prop="id"
+                            label="编号"
+                            width="800">
+                    </el-table-column>
+                    <el-table-column
+                            prop="info"
+                            label="详情">
+                        <el-button type="text" @click="open">查看</el-button>
+                    </el-table-column>
+                </el-table>
+            </div>
+        </div>
+        <div id="page"style="text-align: right">
+            <el-pagination
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage4"
+                    :page-sizes="[100, 200, 300, 400]"
+                    :page-size="100"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="400">
+            </el-pagination>
+        </div>
+    </section>
+
+</div>
+<div>
+    <form action="/area" method="post">
+        <div class="sex">
+            <input type="text" name="sex1">
+        </div>
+        <div class="username">
+            <input type="text" name="username1">
+        </div>
+        <div class="password">
+            <input type="password" name="password1">
+        </div>
+        <div class="submit">
+            <button>提交</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function test(){
+        var txt = {{Dic|safe}};
+        console.log(txt);
+        console.log(txt['data']['list'][0]['id'])
+
+    }
+    new Vue({
+        el:'#research',
+        data() {
+            var txt = {{Dic|safe}};
+            return {
+                input1: '',
+                input2: '',
+                input3: '',
+                options_area: txt['data']['list']
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        methods: {
+            open() {
+                this.$alert('这是一段内容', '标题名称', {
+                    confirmButtonText: '确定',
+                });
+            },
+        },
+        data: function() {
+            var txt = {{Dic|safe}};
+            return {
+                tableData: txt['data']['list'],
+            }
+        }
+    });
+
+    new Vue({
+        el:"#page",
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            },
+        },
+        data() {
+            return {
+                currentPage1: 5,
+                currentPage2: 5,
+                currentPage3: 5,
+                currentPage4: 4
+            };
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configure>
+    <SearchSelection>
+        <selection value="type">按组件类型</selection>
+        <selection value="department">按部门</selection>
+    </SearchSelection>
+    <Departments>
+        <department value="all">全部</department>
+        <department value="base">基础开发部</department>
+        <department value="project">项目开发部</department>
+        <department value="product">产品开发部</department>
+    </Departments>
+    <oldDepartments>
+        <olddepart value="all">全部</olddepart>
+        <olddepart value="Traffic">原交通</olddepart>
+        <olddepart value="PublicSecurity">原公安</olddepart>
+        <olddepart value="Judicial">原司法</olddepart>
+    </oldDepartments>
+    <HomePageTitles>
+        <title>组建类型</title>
+        <title>组件标识</title>
+        <title>最新版本</title>
+        <title>git库</title>
+        <title>svn库</title>
+        <title>地区</title>
+        <title>归属部门</title>
+        <title>负责人</title>
+    </HomePageTitles>
+    <CustomPageTitles>
+        <title>组件标识</title>
+        <title>组件版本</title>
+        <title>定制路径</title>
+        <title>产品线</title>
+        <title>负责人</title>
+    </CustomPageTitles>
+    <OldProductsCustomPageTitles>
+        <title>子系统</title>
+        <title>基线版本</title>
+        <title>定制路径</title>
+        <title>产品线</title>
+        <title>区域</title>
+    </OldProductsCustomPageTitles>
+    <SVNURLStatus>
+        <status value="discard">废弃</status>
+    </SVNURLStatus>
+    <ComponentsType>
+        <ctype value="all">全部</ctype>
+        <ctype value="special">行业业务组件</ctype>
+        <ctype value="framework">框架类组件</ctype>
+        <ctype value="public">公共工程</ctype>
+        <ctype value="general">共性业务组件</ctype>
+        <ctype value="universal">通用服务组件</ctype>
+        <ctype value="resource">资源组件</ctype>
+        <ctype value="ctm-components">定制类组件</ctype>
+        <ctype value="NetUnit">NetUnit</ctype>
+        <ctype value="tool">工具类组件</ctype>
+        <ctype value="foundational">基础环境组件</ctype>
+        <ctype value="pre-research">预研工程</ctype>
+    </ComponentsType>
+</configure>

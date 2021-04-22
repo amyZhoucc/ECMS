@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Data Tables</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+    <!-- 引入样式 element-ui样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <style type="text/css">
+        .el-pagination button:disabled {
+            background-color: #ecf0f5;
+        }
+        .el-pagination .btn-prev {
+            background: center center no-repeat #ecf0f5;
+        }
+        .el-dialog, .el-pager li {
+            background: #ecf0f5;
+        }
+        .el-pagination .btn-next {
+            background: center center no-repeat #ecf0f5;
+        }
+        .el-input__inner {
+            background-color:rgba(255,255,255,0);
+        }
+        .el-table th{
+            background-color: lightgrey;
+        }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="../../index.html" class="logo">
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>配置管理平台</b></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!--  NO.4-->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">Zhou Cc Amily</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <p>
+                                    Zhou Cc Amily - College Student
+                                    <small>Member since Mar. 2019</small>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Zhou Cc Amily</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-file-text-o"></i> <span>信息展示说明</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components_info.html">
+                        <i class="fa fa-th"></i> <span>代码库信息(新)</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="fa fa-th"></i> <span>定制分支信息(新)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="custom_info.html">
+                        <i class="fa fa-th"></i> <span>定制分支信息(老)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="area_repo_info.html">
+                        <i class="fa fa-th"></i> <span>定制项目交付库信息</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components_version_info.html">
+                        <i class="fa fa-th"></i> <span>配置库信息</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="delivery_info.html">
+                        <i class="fa fa-th"></i> <span>版本发布信息(新)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="products_info.html">
+                        <i class="fa fa-th"></i> <span>项目信息(新)</span>
+                        <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class = content-wrapper>
+        <section class = content-header>
+            <div style="height: 700px">
+                <div id="research">
+                    <ul style="list-style: none;margin-left: -35px;" >
+                        <li style="display: inline-block;">组件标识：</li>
+                        <li style="display: inline-block;"><el-input v-model="input1" placeholder="请输入组件标识"></el-input></li>
+                        <li style="display: inline-block;">&nbsp; &nbsp; &nbsp;</li>
+                        <li style="display: inline-block;">版本号：</li>
+                        <li style="display: inline-block"><el-input v-model="input2" placeholder="请输入组件版本"></el-input></li>
+                        <li style="display: inline-block;">&nbsp; &nbsp; &nbsp;</li>
+                        <li style="display: inline-block;">IPM单号：</li>
+                        <li style="display: inline-block;width:200px;"><el-input v-model="input3" placeholder="请输入IPM单号"></el-input></li>
+                        <li style="display: inline-block;">&nbsp; &nbsp; &nbsp;</li>
+                        <li style="display: inline-block"><el-button style="background-color: #3c8dbc;color: #ffffff">搜索</el-button></li>
+                        <li style="display: inline-block"><el-button>重置</el-button></li>
+                    </ul>
+                </div>
+                <div id="app">
+                    <el-table
+                            :data="tableData"
+                            stripe
+                            border
+                            style="width: 100%">
+                        <el-table-column
+                                fixed="left"
+                                prop="componentID"
+                                label="组件标识"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="version"
+                                label="组件版本"
+                                width="140">
+                        </el-table-column>
+                        <el-table-column
+                                prop="custom_url"
+                                label="定制路径"
+                                width="700">
+                        </el-table-column>
+                        <el-table-column
+                                prop="manager"
+                                label="负责人"
+                                width="120">
+                        </el-table-column>
+                        <el-table-column
+                                prop="info"
+                                label="详情">
+                        </el-table-column>
+                    </el-table>
+                </div>
+            </div>
+            <div id="page"style="text-align: right">
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage4"
+                        :page-sizes="[100, 200, 300, 400]"
+                        :page-size="100"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="400">
+                </el-pagination>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; <a href="../../index.html">Zhou Cc Amily</a>.</strong> All rights
+        reserved.
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<!-- 引入组件库 element-ui-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el:'#research',
+        data() {
+            return {
+                input1: '',
+                input2: '',
+                input3: ''
+            }
+        }
+    });
+    new Vue({
+        el: '#app',
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        },
+        data: function() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                }],
+            }
+        }
+    });
+    new Vue({
+        el:"#page",
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        },
+        data() {
+            return {
+                currentPage1: 5,
+                currentPage2: 5,
+                currentPage3: 5,
+                currentPage4: 4
+            };
+        }
+    })
+</script>
+</body>
+</html>
